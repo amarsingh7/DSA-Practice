@@ -26,10 +26,6 @@ public:
                 }
             }
             
-            if(m >= 0){
-                ans = max(ans, j-i+1);
-            }
-            
             j++;
         }
         
