@@ -1,2 +1,3 @@
-# All_Leetcode_Prblms
+# DSA-Practice 
+## Leetcode & GFG
 Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
