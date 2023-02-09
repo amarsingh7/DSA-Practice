@@ -1,17 +1,22 @@
 class Solution {
 public:
     int jump(vector<int>& nums) {
-        int cnt = 0 , low = 0 , high = 0 , n = nums.size() ;
-        while(high < n - 1) 
-        {
-            int maxJump = 0 ;
-            for(int i = low ; i <= high ; i++) 
-                maxJump = max(maxJump , i + nums[i]) ;
+        int answer = 0, n = int(nums.size());
 
-            low = high + 1 ;
-            high = maxJump ;
-            cnt++ ;
+        int curEnd = 0, curFar = 0;
+        
+        for (int i = 0; i < n - 1; ++i) {
+            // Update the farthest reachable index of this jump.
+            curFar = max(curFar, i + nums[i]);
+
+            // If we finish the starting range of this jump,
+            // Move on to the starting range of the next jump.
+            if (i == curEnd) {
+                answer++;
+                curEnd = curFar;
+            }
         }
-        return cnt ;
+        
+        return answer;
     }
 };
