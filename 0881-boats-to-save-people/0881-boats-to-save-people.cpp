@@ -12,8 +12,11 @@ public:
         {
             ans++;
             if(pp[i]+pp[j] <= limit)
-                i++;
-            j--;
+            {
+                i++; j--;
+            }
+            else
+                j--;
         }
         
         return ans;
