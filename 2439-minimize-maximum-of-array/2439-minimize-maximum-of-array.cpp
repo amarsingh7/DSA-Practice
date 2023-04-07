@@ -5,7 +5,7 @@ public:
         for (int i = 0; i < nums.size(); ++i) 
         {
             sum += nums[i];
-            res = max(res, (sum + i) / (i + 1));
+            res= max(res, (sum+i)/(i+1));
         }
         return res;
     }
