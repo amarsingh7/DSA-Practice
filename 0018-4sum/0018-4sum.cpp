@@ -38,13 +38,8 @@ public:
                     }
                         
                 }
-                if(j+1<n and nums[j+1]==nums[j])
-                    ++j;
-                
             }
             
-            if(i+1<n and nums[i+1]==nums[i])
-                ++i;
         }
         sort(ans.begin(), ans.end());
 ans.erase(std::unique(ans.begin(), ans.end()), ans.end());
