@@ -8,9 +8,10 @@ public:
      {
          for(int j=i+1; j<n; j++)
          {
+             if(nums[j]-nums[i] == diff)
              for(int k = j+1; k<n; k++)
              {
-                 if(nums[j]-nums[i] == diff and nums[k]-nums[j]==diff)
+                 if(nums[k]-nums[j]==diff)
                      ans++;
              }
          }
