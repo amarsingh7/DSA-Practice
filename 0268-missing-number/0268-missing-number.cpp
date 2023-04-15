@@ -1,13 +1,14 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        int sum=0, count=0;
         int n= nums.size();
-        sum= n*(n+1)*(0.5);
-        for(int i=0; i<n; i++)
+        sort(nums.begin(), nums.end());
+        int ans=0;
+        for(int i=0; i<=n; i++)
         {
-            count+= nums[i];
+            if(find(nums.begin(), nums.end(), i) ==nums.end())
+                ans=i;
         }
-        return sum- count;
+        return ans;
     }
 };
