@@ -2,21 +2,22 @@ class Solution {
 public:
     int arraySign(vector<int>& nums) {
         int n= nums.size();
-        int index=0;
-        for(auto &i:nums)
+        int cn=0;
+        int cp=0;
+        int co=0;
+        for(auto i:nums)
         {
             if(i<0)
-                nums[index++]= -1;
+                cn++;
             else if(i>0)
-                nums[index++]= 1;
+                cp++;
             else
-                nums[index++]= 0;
+                co++;
         }
-        int prod=1;
-        for(int i=0; i<n; i++)
-        {
-            prod= prod*nums[i];
-        }
-        return prod;
+        if(co>=1)
+            return 0;
+        if(cn%2 !=0 and co<=0)
+            return -1;
+        return 1;
     }
 };
