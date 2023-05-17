@@ -15,9 +15,18 @@ class Solution
     int peakElement(int arr[], int n)
     {
        // Your code here
-       int index=0;
-       index= max_element(arr, arr+n)- arr;
-       return index;
+       int start=0, end=n-1;
+       while(start<end-1)
+       {
+           int mid= (start+end)/2;
+           if(arr[mid]>arr[mid-1] and arr[mid]>arr[mid+1])
+                return mid;
+            else if(arr[mid]>arr[mid+1])
+                end= mid-1;
+            else
+                start= mid+1;
+       }
+       return arr[start]>arr[end] ? start:end;
     }
 };
 
