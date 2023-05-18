@@ -12,7 +12,7 @@ public:
         }
         for(int i=0; i<n; i++)
         {
-            if(!iiee[i])
+            if(iiee[i]==false)
                 v.push_back(i);
         }
         return v;
