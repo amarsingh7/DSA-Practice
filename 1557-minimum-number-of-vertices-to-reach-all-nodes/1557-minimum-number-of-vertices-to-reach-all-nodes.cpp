@@ -10,12 +10,11 @@ public:
                 iiee[edges[i][1]]= true;
             }
         }
-        vector<int> rnodes;
         for(int i=0; i<n; i++)
         {
             if(!iiee[i])
-                rnodes.push_back(i);
+                v.push_back(i);
         }
-        return rnodes;
+        return v;
     }
 };
