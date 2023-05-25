@@ -1,16 +1,41 @@
 class Solution {
 public:
-    int shipWithinDays(vector<int>& weights, int D) {
-        int left = 0, right = 25000000;
-        for (int w: weights)
-            left = max(left, w);
-        while (left < right) {
-            int mid = (left + right) / 2, need = 1, cur = 0;
-            for (int i = 0; i < weights.size() && need <= D; cur += weights[i++])
-                if (cur + weights[i] > mid)
-                    cur = 0, need++;
-            if (need > D) left = mid + 1;
-            else right = mid;
+    int rsum(vector<int> &weights)
+    {
+        int sum=0;
+        for(int i=0; i<weights.size(); i++)
+        {
+            sum+= weights[i];
+        }
+        return sum;
+    }
+    bool feasible(vector<int> &weights, int c, int days)
+    {
+        int dn=1, cl= 0;
+        for(auto wt:weights)
+        {
+            cl+= wt;
+            if(cl> c)
+            {
+                dn++;
+                cl= wt;
+            }
+        }
+          return dn<= days;
+    }
+    int shipWithinDays(vector<int>& weights, int days) {
+        int left= *max_element(weights.begin(), weights.end());
+        int right= rsum(weights);
+        int ans=0;
+        
+        while(left< right)
+        {
+            int mid= (left+right)/2;
+            if(feasible(weights, mid, days))
+                right= mid;
+            else
+                left= mid+1;
+                
         }
         return left;
     }
