@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    int asum(vector<int> &nums, int &mid)
+    int asum(vector<int> nums, int mid)
     {
         int res=0;
         for(int i=0;  i<nums.size(); i++)
