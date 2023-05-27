@@ -4,15 +4,15 @@ public:
         int n= stoneValue.size();
         int sum=0;
         
-        int dp[n+1];
-        dp[n]=0;
+        int dp[4];
+        dp[n%4]=0;
         for(int i=n-1; i>=0; i--)
         {
-            dp[i]=stoneValue[i]-dp[i+1];
+            dp[i%4]=stoneValue[i]-dp[(i+1)%4];
             if(i+2 <=n)
-                dp[i]= max(dp[i], stoneValue[i]+stoneValue[i+1]- dp[i+2]);
+                dp[i%4]= max(dp[i%4], stoneValue[i]+stoneValue[i+1]- dp[(i+2)%4]);
             if(i+3 <=n)
-                dp[i]= max(dp[i], stoneValue[i]+ stoneValue[i+1]+ stoneValue[i+2]-dp[i+3]);
+                dp[i%4]= max(dp[i%4], stoneValue[i]+ stoneValue[i+1]+ stoneValue[i+2]-dp[(i+3)%4]);
             
         }
         if(dp[0]>0)
