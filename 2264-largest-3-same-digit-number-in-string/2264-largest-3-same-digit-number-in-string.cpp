@@ -7,7 +7,7 @@ public:
                                     "333", "222", "111", "000"};
         for (std::string s : arr) 
         {
-            if(num.find(s) != std::string::npos) 
+            if(num.find(s) != string::npos) 
                 return s;
         }
 
