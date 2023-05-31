@@ -1,8 +1,10 @@
 class MyHashSet {
-private:
-	vector<bool> table;
 public:
-	MyHashSet() : table(1e6 + 1, false) {}
+    int table[1000001];
+	MyHashSet()
+    {
+        fill(table, table+1000000, false);
+    } 
 	
 	void add(int key) {
 		table[key] = true;
