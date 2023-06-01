@@ -7,11 +7,11 @@ public:
             freq[c]++;
         for(auto it: freq)
             maxheap.push({it.second,it.first}); 
-        string ans="";   
+        s="";   
         while(!maxheap.empty()){
-            ans+=string(maxheap.top().first,maxheap.top().second); 
+            s+=string(maxheap.top().first,maxheap.top().second); 
             maxheap.pop();
         }
-        return ans;
+        return s;
     }
 };
