@@ -1,0 +1,1 @@
+Do Learn KMP algorithm to get linear seach time in search for string B in A+A string.
