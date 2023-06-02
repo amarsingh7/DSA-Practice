@@ -8,9 +8,8 @@ public:
         for(int i=0; i<n; i++)
         {
             if(s[i]=='(')
-                cur++;
-            ans= max(ans, cur);
-            if(s[i]==')')
+                cur++, ans= max(ans, cur);
+            else if(s[i]==')')
                 cur--;
         }
         return ans;
