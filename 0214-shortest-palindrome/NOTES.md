@@ -1,0 +1,1 @@
+NOTE: s.substr(0, i) extracts a substring from the beginning of the string up to index i, while s.substr(i) extracts a substring from index i to the end of the string.
