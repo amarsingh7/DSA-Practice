@@ -12,7 +12,7 @@ class Solution {
 public:
     void updateListData(ListNode* head, vector<int>& vec) {
     ListNode* current = head;
-    size_t index = 0;
+    int index = 0;
 
         while (current && index < vec.size()) 
         {
