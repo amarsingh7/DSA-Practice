@@ -16,9 +16,9 @@ public:
         
         if(root)
         {
-            ans.emplace_back(root->val);
-            preorderTraversal(root->left);
-            preorderTraversal(root->right);
+            ans.emplace_back(root-> val);
+            preorderTraversal(root-> left);
+            preorderTraversal(root-> right);
         }
         return ans;
     }
