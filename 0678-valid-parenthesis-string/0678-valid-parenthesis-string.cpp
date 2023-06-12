@@ -16,6 +16,6 @@ public:
                 break;
            op = max(op, 0);
        }
-       return op == 0 and s.size() !=0;
+       return op ==0;
     }
 };
