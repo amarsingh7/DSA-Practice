@@ -15,8 +15,7 @@ public:
     {
         vector<TreeNode*> q{r};
         int lvl = 0, msum_lvl = 0, msum = INT_MIN;
-        while (!q.empty()) 
-        {
+    while (!q.empty()) {
       vector<TreeNode*> q1;
       int sum = 0;
       ++lvl;
