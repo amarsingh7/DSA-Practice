@@ -1,30 +1,30 @@
 class Solution {
 public:
-    void search(vector<int>& num, int next, vector<int>& pSol, int target, vector<vector<int> >& result)
+    
+    void search(vector<int>& num, int next, vector<int>& temp, int n, vector<vector<int> >& result)
     {
-        if(target == 0)
+        if(n == 0)
         {
-            result.push_back(pSol);
+            result.push_back(temp);
             return;
         }
         
-        if(next == num.size() || target - num[next] < 0)
+        if(n<0 || next==num.size())
             return;
             
-        pSol.push_back(num[next]);
-        search(num, next, pSol, target - num[next], result);
-        pSol.pop_back();
+        search(num, next+1, temp, n, result);
+        temp.push_back(num[next]);
         
-        search(num, next + 1, pSol, target, result);
+        search(num, next, temp, n- num[next], result);
+        temp.pop_back();
     }
-
     
-    vector<vector<int> > combinationSum(vector<int> &num, int target) 
+    vector<vector<int> > combinationSum(vector<int> &nums, int target) 
     {
         vector<vector<int> > result;
-        sort(num.begin(), num.end());
-        vector<int> pSol;
-        search(num, 0, pSol, target, result);
+        sort(nums.begin(), nums.end());
+        vector<int> temp;
+        search(nums, 0, temp, target, result);
         return result;    
     }
 };
