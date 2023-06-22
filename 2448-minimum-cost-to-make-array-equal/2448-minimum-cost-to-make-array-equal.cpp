@@ -3,7 +3,7 @@ class Solution {
 public:
     long long minCost(vector<int>& nums, vector<int>& cost) {
         int n = nums.size();
-        vector<std::pair<int, int>> numsAndCost(n);
+        vector<pair<int, int>> numsAndCost(n);
         for (int i = 0; i < n; ++i) {
             numsAndCost[i] = {nums[i], cost[i]};
         }
@@ -17,13 +17,16 @@ public:
         long long totalCost = 0;
         for (int i = 1; i < n; ++i)
             totalCost += 1LL * numsAndCost[i].second * (numsAndCost[i].first - numsAndCost[0].first);
+        // Just taking the equivalent val as nums[0]
         long long answer = totalCost;
 
-        for (int i = 1; i < n; ++i) {
+        for (int i = 1; i < n; ++i) 
+        {
+            // Using prefix sum and suffix sum
             int gap = numsAndCost[i].first - numsAndCost[i - 1].first;
             totalCost += 1LL * prefixCost[i - 1] * gap;
             totalCost -= 1LL * (prefixCost[n - 1] - prefixCost[i - 1]) * gap;
-            answer = std::min(answer, totalCost);
+            answer = min(answer, totalCost);
         }
 
         return answer;
