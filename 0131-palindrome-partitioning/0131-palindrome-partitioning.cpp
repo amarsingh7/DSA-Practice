@@ -10,7 +10,7 @@ public:
         return true;
     }
     void dfs(vector<vector<string>>& result, vector<string>& subset, string& s, int start) {
-    if (start >= s.size()) 
+    if (start == s.size()) 
             result.push_back(subset);
         
     for(int end= start; end<s.length(); end++)
