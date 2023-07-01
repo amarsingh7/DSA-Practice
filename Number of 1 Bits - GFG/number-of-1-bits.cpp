@@ -5,9 +5,21 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    int setBits(int n) {
-        
-        return bitset<32>(n).count();
+    int setBits(int N) {
+        // Write Your Code here
+        int ans=0;
+        string bn;
+        while(N>0)
+        {
+            bn= to_string(N%2) +bn;
+            N= N/2;
+        }
+        for(int i=0; i<bn.size(); i++)
+        {
+            if(bn[i]=='1')
+                ans++;
+        }
+        return ans;
     }
 };
 
