@@ -1,10 +1,9 @@
 class Solution {
 public:
     int maxConsecutiveAnswers(string answerKey, int k) {
+        int n= answerKey.size();
         int i;
         int j=0;
-        int n= answerKey.size();
-        int res=0, ans=0;
         int pk=k;
         int p=0;
         for(i=0; i<n; i++)
@@ -16,9 +15,6 @@ public:
             if(pk<0 and answerKey[p++]=='F')
                 pk++;
         }
-        // res= i-j;
         return max(i-j, i-p);
-        // ans= i-p;
-        // return max(res, ans);
     }
 };
