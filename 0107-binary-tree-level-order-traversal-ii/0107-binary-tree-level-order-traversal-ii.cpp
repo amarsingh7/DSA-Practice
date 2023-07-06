@@ -32,10 +32,9 @@ public:
                 if(cur->left)   q.push(cur->left);
                 if(cur->right)  q.push(cur->right);
             }
-            ans.push_back(temp);
+            ans.insert(ans.begin(), temp);
             temp.clear();
         }
-        reverse(ans.begin(), ans.end());
         return ans;
     }
 };
