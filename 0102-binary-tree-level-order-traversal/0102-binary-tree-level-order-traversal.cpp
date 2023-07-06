@@ -22,8 +22,8 @@ public:
         
         while(!q.empty())
         {
-            int sz= q.size();
-            for(int i=0; i<sz; i++)
+            int n= q.size();
+            for(int i=0; i<n; i++)
             {
                 TreeNode* node= q.front();
                 q.pop();
