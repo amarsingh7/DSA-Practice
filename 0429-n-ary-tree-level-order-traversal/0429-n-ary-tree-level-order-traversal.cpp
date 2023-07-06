@@ -36,6 +36,7 @@ public:
             {
                 Node* fck= q.front();
                 q.pop();
+                
                 temp.push_back(fck->val);
             
                 for(Node* child: fck->children)
