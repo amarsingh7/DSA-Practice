@@ -32,9 +32,9 @@ public:
                 if(node->left)  q.push(node->left);
                 if(node->right) q.push(node->right);
             }
-            ans= 1LL*(accumulate(temp.begin(), temp.end(), 0.0));
-            cnt= 1LL*(temp.size());
-            double fck= 1LL*(ans/cnt);
+            ans= (accumulate(temp.begin(), temp.end(), 0.0));
+            cnt= (temp.size());
+            double fck= (ans/cnt);
             res.push_back(fck);
             
             temp.clear();
