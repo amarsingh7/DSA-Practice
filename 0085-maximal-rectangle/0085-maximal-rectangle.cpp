@@ -1,26 +1,34 @@
 class Solution {
 public:
     int maximalRectangle(vector<vector<char>>& matrix) {
-        int m= matrix.size();
-        if(m==0)    
-            return 0;
-        int n= matrix[0].size();
-        vector<vector<int>> vec(m, vector<int>(n));
-        int ans=0;
-        for(int i=0; i<m; i++)
-        {
-            for(int j=0; j<n; j++)
-            {
-                if(matrix[i][j]=='0')
-                    continue;
-                int w= vec[i][j]= (j? vec[i][j-1]:0)+1;
-                for(int k=i; k>=0; k--)
-                {
-                    w= min(w, vec[k][j]);
-                    ans= max(ans, w*(i-k+1));
-                }
-            }
+    if(matrix.empty()) 
+        return 0;
+    int m = matrix.size();
+    int n = matrix[0].size();
+    int left[n], right[n], height[n];
+    fill_n(left,n,0); fill_n(right,n,n); fill_n(height,n,0);
+    int maxA = 0;
+    for(int i=0; i<m; i++) 
+    {
+        int cur_left=0, cur_right=n; 
+        for(int j=0; j<n; j++) { // compute height 
+            if(matrix[i][j]=='1') height[j]++; 
+            else height[j]=0;
         }
-        return ans;
+        for(int j=0; j<n; j++) { // compute left 
+            if(matrix[i][j]=='1') 
+                left[j]=max(left[j],cur_left);
+            else {left[j]=0; cur_left=j+1;}
+        } 
+        for(int j=n-1; j>=0; j--) { // compute right
+            if(matrix[i][j]=='1') 
+                right[j]=min(right[j],cur_right);
+            else {right[j]=n; cur_right=j;}    
+        }
+        // compute the area of rectangle 
+        for(int j=0; j<n; j++)
+            maxA = max(maxA,(right[j]-left[j])*height[j]);
+    }
+    return maxA;
     }
 };
