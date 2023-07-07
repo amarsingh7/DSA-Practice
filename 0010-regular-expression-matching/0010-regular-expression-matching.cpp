@@ -13,7 +13,8 @@ public:
 
         if (j == pn)
             return i == sn;
-
+        if(memo[i][j] != -1)
+            return memo[i][j];
         if (j + 1 < pn && p[j + 1] == '*') {
             if (isMatch(i, j + 2, s, p, memo))
                 return true;
