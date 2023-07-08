@@ -6,7 +6,7 @@ public:
         vector<int> pairw(n-1, 0);
         
         for(int i=0; i<n-1; i++)
-            pairw[i]+= weights[i]+ weights[i+1];
+            pairw[i]= weights[i]+ weights[i+1];
         sort(pairw.begin(), pairw.end());
         
         for(int i=0; i<k-1; i++)
