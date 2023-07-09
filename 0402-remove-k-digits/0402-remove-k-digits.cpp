@@ -20,11 +20,11 @@ public:
         }
         st.push(num[i]);
         
-        if (st.size() == 1 && st.top() == '0')
+        if (st.size() == 1 && st.top() == '0') 
             st.pop();
     }
   
-    while (k > 0 && !st.empty()) {
+    while (k > 0 && !st.empty()) {  // 1234 type num case
         st.pop();
         k--;
     }
