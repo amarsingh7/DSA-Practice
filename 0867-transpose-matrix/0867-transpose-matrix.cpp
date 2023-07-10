@@ -4,15 +4,12 @@ public:
         
         int r= matrix.size();
         int c= matrix[0].size();
-        vector<vector<int>> ans;
-        
-        vector<int> vec;
+        vector<vector<int>> ans(c, vector<int>(r));
+         
         for(int i=0; i<c; i++)
         {
             for(int j=0; j<r; j++) 
-                vec.push_back(matrix[j][i]); 
-            ans.push_back(vec);
-            vec.clear();
+                ans[i][j]= matrix[j][i];
         }   
         return ans;
     }
