@@ -1,18 +1,21 @@
 class Solution {
 public:
     string getPermutation(int n, int k) {
-        vector<int> nums;
-        for(int i=1; i<=n; i++)
-        {
-            nums.push_back(i);
+        string a = "";
+        for (int i = 1; i <= n; i++)
+            a += to_string(i);
+        vector<int> fact(n + 1);
+        fact[0] = 1;
+        for (int i = 1; i <= n; i++)
+            fact[i] = fact[i - 1] * i;
+        k--;
+        string ans = "";
+        for (int i = n - 1; i >= 0; i--) {
+            int index = k / fact[i];    // getting the start val ind of ans
+            k %= fact[i];
+            ans += a[index];
+            a.erase(a.begin() + index);
         }
-        string ans="";
-        for(int i=0; i<k-1; i++)
-        {
-            next_permutation(nums.begin(), nums.end());
-        }
-        for(int i=0; i<nums.size(); i++)
-            ans= ans+ to_string(nums[i]);
         return ans;
     }
 };
