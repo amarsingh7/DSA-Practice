@@ -9,7 +9,7 @@ public:
         }   
         for(int i= index; i<nums.size(); i++)
         {
-            if(index !=i and nums[index] ==nums[i])
+            if(i>index and nums[index] ==nums[i])
                 continue;
             swap(nums[index], nums[i]);
             backtrack(nums, ans, index+1); 
