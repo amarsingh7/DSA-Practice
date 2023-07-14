@@ -1,24 +1,25 @@
 class Solution {
 public:
-    // int fac(int n)
-    // {
-    //     if(n==1 ||n==0)
-    //         return 1;
-    //     return n*fac(n-1);
-    // }
+    void backtrack(vector<int> &nums, vector<vector<int>> &ans, int index)
+    {
+        if(index== nums.size()-1)
+        {
+            ans.push_back(nums);
+            return;
+        }   
+        for(int i= index; i<nums.size(); i++)
+        {
+            swap(nums[index], nums[i]);
+            backtrack(nums, ans, index+1);
+            swap(nums[index], nums[i]);
+        }
+    }
+    
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> ans;
         int n= nums.size();
-        vector<int> fac(n+1);
-        fac[0]= 1;
-        for(int i=1; i<=n; i++)
-            fac[i]= fac[i-1]*i;
         
-        while(fac[n]--)
-        {
-            ans.push_back(nums);
-            next_permutation(nums.begin(), nums.end());
-        }
+        backtrack(nums, ans, 0);
         return ans;
        
     }
