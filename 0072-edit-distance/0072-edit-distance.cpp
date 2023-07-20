@@ -1,39 +1,25 @@
 class Solution {
 public:
-    vector<vector<int>> memo;
     int minDistance(string word1, string word2)
     {
-        memo.resize(word1.length() + 1, vector<int>(word2.length() + 1, -1));
-        return minDistanceRecur(word1, word2, word1.size(), word2.size());
-    }
-
-    int minDistanceRecur(string &word1, string &word2, int word1Index, int word2Index)
-    {
-        if (word1Index == 0)
-        {
-            return word2Index;
+        int m = word1.size(), n = word2.size();
+        vector<int> pre(n + 1, 0), cur(n + 1, 0);
+        for (int j = 1; j <= n; j++) {
+            pre[j] = j;
         }
-        if (word2Index == 0)
-        {
-            return word1Index;
+        for (int i = 1; i <= m; i++) {
+            cur[0] = i;
+            for (int j = 1; j <= n; j++) {
+                if (word1[i - 1] == word2[j - 1]) {
+                    cur[j] = pre[j - 1];
+                } 
+                else {
+                    cur[j] = min(pre[j - 1], min(cur[j - 1], pre[j])) + 1;
+                }
+            }
+            fill(pre.begin(), pre.end(), 0);
+            swap(pre, cur);
         }
-        if (memo[word1Index][word2Index] != -1)
-        {
-            return memo[word1Index][word2Index];
-        }
-        int minEditDistance = 0;
-        if (word1[word1Index - 1] == word2[word2Index - 1])
-        {
-            minEditDistance = minDistanceRecur(word1, word2, word1Index - 1, word2Index - 1);
-        }
-        else
-        {
-            int insertOperation = minDistanceRecur(word1, word2, word1Index, word2Index - 1);
-            int deleteOperation = minDistanceRecur(word1, word2, word1Index - 1, word2Index);
-            int replaceOperation = minDistanceRecur(word1, word2, word1Index - 1, word2Index - 1);
-            minEditDistance = min(insertOperation, min(deleteOperation, replaceOperation)) + 1;
-        }
-        memo[word1Index][word2Index] = minEditDistance;
-        return minEditDistance; 
+        return pre[n];
     }
 };
