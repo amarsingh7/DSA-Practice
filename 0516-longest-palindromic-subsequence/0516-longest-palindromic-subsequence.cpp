@@ -1,27 +1,26 @@
 class Solution {
 public:
+    int dp[1001][1001];
 
-    int lcs(string &s, string &r, int m, int n, vector<vector<int>> &dp)
-    {
-        if(m==0 || n==0)
-            return 0;
-        if(s[m-1]==r[n-1])
-            //return 1+lcs(s, r, m-1, n-1);
-            return dp[m][n]= 1+ lcs(s, r, m-1, n-1, dp);
-        if(dp[m][n] != -1)
-            return dp[m][n];
-        else
-            return dp[m][n]= max(lcs(s, r, m-1, n, dp), lcs(s, r, m, n-1, dp));
-    }
-    
-    int longestPalindromeSubseq(string s) {
-        string r;
-        r= s;
-        int n= s.size();
-        int m=n;
-        reverse(s.begin(), s.end());
-        vector<vector<int>> dp(m+1, vector<int>(m+1, -1));
-        return lcs(s, r, n, m, dp);
-        
-    }
+int lcs(int i, int j, string &s, string &t) {
+    if (i < 0 || j < 0)
+        return 0;
+    if (dp[i][j] != -1)
+        return dp[i][j];
+    if (s[i] == t[j])
+        return dp[i][j] = 1 + lcs(i - 1, j - 1, s, t);
+    return dp[i][j] = max(lcs(i - 1, j, s, t), lcs(i, j - 1, s, t));
+}
+
+int longestPalindromeSubseq(string s) {
+    string t(s.rbegin(), s.rend());
+    int m = s.size();
+    int n = m;
+
+    // Initialize dp array with -1
+    memset(dp, -1, sizeof(dp));
+
+    return lcs(m - 1, n - 1, s, t);
+}
+
 };
