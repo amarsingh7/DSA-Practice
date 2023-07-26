@@ -6,7 +6,7 @@ public:
         for(int i=0; i<dist.size(); i++)
         {
             double t= (double)dist[i]/ (double)speed;
-            time+= (i== dist.size() -1 ?t:ceil(t));
+            time+= (i== dist.size() -1 ? t:ceil(t));
         }
         return time;
     }
