@@ -4,32 +4,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// } Driver Code Ends
+// } Driver Code Endshttps://www.geeksforgeeks.org/geek-olympics-2023
 // User function Template for C++
 
 class Solution{
 public:
-    
     int palindromicPartition(string str)
     {
         // code here
         int n= str.size();
         vector<int> dp(n, INT_MAX);
-        vector<vector<bool>> palin(n, vector<bool>(n, false));
-
+        
+        vector<vector<bool>> dp2(n, vector<bool>(n, false));
+        
         for(int i=0; i<n; i++)
         {
             for(int j=0; j<=i; j++)
             {
-                if(str[i]==str[j] and (i-j<=1 || palin[j+1][i-1]))
+                if(str[i]==str[j] and (i-j <=1 || dp2[j+1][i-1]))
                 {
-                    palin[j][i]= true;
+                    dp2[j][i]= true;
                     if(j==0)
                         dp[i]=0;
                     else
-                        dp[i]= min(dp[i], dp[j-1]+1);
+                        dp[i]= min(dp[i], dp[j-1]+1); 
                 }
                     
+                
             }
         }
         return dp[n-1];
