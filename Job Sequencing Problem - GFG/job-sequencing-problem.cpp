@@ -27,30 +27,30 @@ class Solution
 {
     public:
     //Function to find the maximum profit and the number of jobs done.
+    static bool comp(Job &a, Job &b)
+    {
+        return (a.profit > b.profit);
+    }
     vector<int> JobScheduling(Job arr[], int n) 
     { 
         // your code here
-        map<int, vector<int>> m;
-        for(int i=0; i<n; i++) 
-            m[arr[i].dead].push_back(arr[i].profit);
+        sort(arr, arr+n, comp);
+        vector<bool> vis(n+1, false);
         
-        priority_queue<int, vector<int>, greater<int>> pq;
-        
-        for(auto i : m) 
+        int jobcnt=0, maxp=0;
+        for(int i=0; i<n; i++)
         {
-            int s = i.first;
-            vector<int> v = i.second;
-            for(int i : v) 
+            for(int j=arr[i].dead -1; j>=0; j--)
             {
-                pq.push(i);
-                if(pq.size() > s) pq.pop();
+                if(vis[j])
+                    continue;
+                vis[j]= true;
+                jobcnt++;
+                maxp+= arr[i].profit;
+                break;
             }
         }
-        int a = pq.size(), b = 0;
-        while(pq.size()) 
-            b += pq.top(), pq.pop();
-        
-        return {a, b};
+        return {jobcnt, maxp};
     } 
 };
 
