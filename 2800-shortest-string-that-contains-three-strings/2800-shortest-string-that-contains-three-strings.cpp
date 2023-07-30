@@ -21,8 +21,6 @@ public:
     }
     string minimumString(string a, string b, string c) {
         vector<string> ans;
-        if(a=="ca" && b=="a" && c=="a")
-            return "ca";
         solve(a, b, c, ans);
         solve(a, c, b, ans);
         solve(c, a, b, ans);
@@ -31,8 +29,10 @@ public:
         solve(c, b, a, ans);
 
         sort(ans.begin(), ans.end(), [](string a, string b){
-            if(a.length()!=b.length()) return a.length()<b.length();
-            return a<b;});
+            if(a.length()!=b.length()) 
+                return a.length()<b.length();
+            return a<b;
+        });
         return ans[0];
     }
 };
