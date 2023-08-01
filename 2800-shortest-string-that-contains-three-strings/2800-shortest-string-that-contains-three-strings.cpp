@@ -8,7 +8,7 @@ public:
         for(int i=0; i<=x.size(); i++)
         {
             if(x.substr(i, x.size())== y.substr(0, x.size() -i))
-                    return x+ y.substr(x.size() -i, y.size()+1);
+                    return x+ y.substr(x.size() -i, y.size());
            
         }
         return x+y;
