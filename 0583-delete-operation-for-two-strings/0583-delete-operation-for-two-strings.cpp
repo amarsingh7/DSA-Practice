@@ -6,10 +6,10 @@ public:
         int n= b.size();
         int i=0, j=0;
         
-//         if(a.find(b) != string::npos)
-//             return m-n;
-//         if(b.find(a) !=string::npos)
-//             return n-m;
+        if(a.find(b) != string::npos)
+            return m-n;
+        if(b.find(a) !=string::npos)
+            return n-m;
         
         for(int i=1; i<=m; i++)
         {
@@ -21,6 +21,7 @@ public:
                     dp[i][j]= max(dp[i-1][j], dp[i][j-1]);
             }
         }
-        return m+n- 2*dp[m][n];
+        int res= m+n- 2*dp[m][n];
+        return res;
     }
 };
