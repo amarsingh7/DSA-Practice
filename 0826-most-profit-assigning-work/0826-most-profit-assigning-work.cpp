@@ -10,8 +10,9 @@ public:
             jobs.push_back(make_pair(difficulty[j], profit[j]));
         sort(jobs.begin(), jobs.end());
         sort(worker.begin(), worker.end());
-        for (int & ability : worker) {
-            while (i < n && ability >= jobs[i].first)
+        for (int & w : worker) 
+        {
+            while (i < n && w >= jobs[i].first)
                 best = max(jobs[i++].second, best);
             res += best;
         }
