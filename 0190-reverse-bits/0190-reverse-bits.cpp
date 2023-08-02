@@ -4,10 +4,13 @@ public:
         uint32_t ans=0;
         for(int i = 0; i < 32; i++)
         {
-           //for inversing a decimal number, simply replace 2 by 10
+            // In each iteration, ans l-shifts to make room for adding 
+            // the rightmost bit of n
             ans = (ans <<1) + n % 2;
-            n = n>>1; // we can also do, n= n/2;
+            n = n>>1; 
+            // the processed rightmost bit is removed by r-shift, and new
+            // unprocessed bit comes from left.
         }
-        return ans;
+        return ans;               
     }
 };
