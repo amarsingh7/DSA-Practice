@@ -6,6 +6,11 @@ public:
         // so 3^19= 1162261467 is limit on powers of 3
         if(n<=0)
             return false;
-        return 1162261467 %n==0;
+        while(n!=1){
+            int r=n%3; // r: remainder
+            n=n/3;
+            if(r!=0) return false;
+        }
+        return true;
     }
 };
