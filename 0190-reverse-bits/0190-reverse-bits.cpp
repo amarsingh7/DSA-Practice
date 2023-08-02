@@ -6,7 +6,7 @@ public:
         {
            //for inversing a decimal number, simply replace 2 by 10
             ans = ans * 2 + n % 2;
-            n /= 2;
+            n = n>>1;
         }
         return ans;
     }
