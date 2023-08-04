@@ -7,9 +7,7 @@ class Solution {
   public:
     int findPosition(int N) {
         // code here
-        if(N==0)
-            return -1;
-        if((N &(N-1)) !=0)
+        if(N==0 || (N &(N-1)) !=0)
             return -1;
         int ans=0, x=1;
         
