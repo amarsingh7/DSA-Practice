@@ -3,7 +3,8 @@ class Solution {
 public:
 bool wordBreak(string s, vector<string>& wordDict) {
     int n = s.size();
-    vector<bool> dp(n + 1);
+    bool dp[1001];
+    fill(dp, dp + n + 1, false);
     dp[n] = true;
 
     for (int i = n - 1; i >= 0; i--) {
