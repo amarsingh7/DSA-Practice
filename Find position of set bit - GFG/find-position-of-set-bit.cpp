@@ -12,8 +12,9 @@ class Solution {
         int ans=0, x=1;
         
         while(N>1){
-            ans++;
+            
             N>>= 1;
+            ans++;
         }
         return ans+1;
     }
