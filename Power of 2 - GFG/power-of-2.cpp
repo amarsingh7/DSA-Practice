@@ -16,7 +16,7 @@ class Solution{
         // Your code here 
         if(n==0)
             return false;
-        return bitset<64>(n).count()==1;
+        return bitset<128>(n).count()==1;
     }
 };
 
