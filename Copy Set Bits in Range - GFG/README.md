@@ -1,6 +1,6 @@
 # Copy Set Bits in Range
 ## Easy
-<div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given two numbers <strong>X</strong> and <strong>Y</strong>, and a range [<strong>L</strong>, <strong>R</strong>] where 1 &lt;= L &lt;= R &lt;= 31. You have to copy the set bits of <strong>'Y'</strong> in the range L to R in<strong> 'X'.</strong>&nbsp;Return this modified X.</span></p>
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given two numbers <strong>X</strong> and <strong>Y</strong>, and a range [<strong>L</strong>, <strong>R</strong>] where 1 &lt;= L &lt;= R &lt;= 32. You have to copy the set bits of <strong>'Y'</strong> in the range L to R in<strong> 'X'.</strong>&nbsp;Return this modified X.</span></p>
 <p><span style="font-size: 18px;">Note: Range count will be from Right to Left &amp; start from 1.</span></p>
 <p><strong><span style="font-size: 18px;">Example 1:</span></strong></p>
 <pre><span style="font-size: 18px;"><strong>Input:</strong> 
