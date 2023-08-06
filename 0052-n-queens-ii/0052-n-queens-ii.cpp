@@ -1,8 +1,7 @@
 class Solution {
 public:
     
-    vector<vector<string >> ans;
-        
+    int ans=0; 
     bool isvalid(vector<string> &board, int row, int col)
     {
         for(int i=row; i>=0; i--)
@@ -20,7 +19,7 @@ public:
     {
         if(row== board.size())     // exploration done
         {
-            ans.push_back(board);
+            ans++;
             return;
         }
             
@@ -39,6 +38,6 @@ public:
         vector<string> board(n, string(n, '.'));
         dfs(board, 0);
         
-        return ans.size();
+        return ans;
     }
 };
