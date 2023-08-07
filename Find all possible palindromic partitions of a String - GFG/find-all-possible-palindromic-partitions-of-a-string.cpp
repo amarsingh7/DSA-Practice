@@ -8,36 +8,45 @@ using namespace std;
 class Solution {
   public:
   
-    bool palind(string s, int start, int end)
+    bool isPalindrome(string &s)
     {
-        while(start<=end)
-        {
-            if(s[start++] !=s[end--])
-                return false;
-        }
-        return true;
+		int n = s.size();
+		int i = 0, j = n - 1;
+		while (i < j) {
+			if (s[i++] != s[j--])
+				return false;
+		}
+		return true;
     }
-    void dfs(vector<vector<string>> &ans, vector<string> &temp, string s, int start)
+    void dfs(vector<vector<string>>& result, vector<string>& subset, string& s, int start) {
+    if (start == s.size()) 
     {
-        if(start== s.size())
-            ans.push_back(temp);
-        for(int i=start; i<=s.size(); i++)
+        result.push_back(subset);
+        return;
+    }
+     
+    string t;
+    for(int i= start; i<s.size(); i++)
+    {
+        t.push_back(s[i]);
+        if(isPalindrome(t))
         {
-            if(palind(s, start, i))
-            {
-                temp.push_back(s.substr(start, i-start+1));
-                dfs(ans, temp, s, i+1);
-                temp.pop_back();
-            }
+            subset.push_back(t);
+            dfs(result, subset, s, i+1);
+            subset.pop_back();
         }
     }
-    vector<vector<string>> allPalindromicPerms(string S) {
-        // code here
-        vector<vector<string>> ans;
-        vector<string> temp;
-        dfs(ans, temp, S, 0);
-        return ans;
-    }
+       
+}
+
+vector<vector<string>> allPalindromicPerms(string s) {
+    vector<vector<string>> result;
+    vector<string> subset;
+    
+    dfs(result, subset, s, 0);
+    
+    return result;
+}
 };
 
 //{ Driver Code Starts.
