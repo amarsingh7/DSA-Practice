@@ -1,53 +1,43 @@
 class Solution {
 public:
-    bool isValidSudoku(vector<vector<char>>& board) {
-    // Check rows
-    for (int i = 0; i < 9; ++i) {
-        vector<bool> rowCheck(9, false);
-        for (int j = 0; j < 9; ++j) {
-            char current = board[i][j];
-            if (current != '.') {
-                int num = current - '1';
-                if (rowCheck[num]) {
-                    return false;
-                }
-                rowCheck[num] = true;
-            }
-        }
-    }
-
-    // Check columns
-    for (int j = 0; j < 9; ++j) {
-        vector<bool> colCheck(9, false);
-        for (int i = 0; i < 9; ++i) {
-            char current = board[i][j];
-            if (current != '.') {
-                int num = current - '1';
-                if (colCheck[num]) {
-                    return false;
-                }
-                colCheck[num] = true;
-            }
-        }
-    }
-
-    // Check subgrids
-    
-    for (int row = 0; row < 9; row += 3) {
-        for (int col = 0; col < 9; col += 3) {
-            vector<bool> subgridCheck(9, false);
-            for (int i = 0; i < 9; ++i) {
-                    char current = board[3*(row/3) + i/3][3*(col/3) + i%3];
-                    if (current != '.') {
-                        if (subgridCheck[current-'1']) 
-                            return false;
-                        subgridCheck[current-'1'] = true;
-                    }
-            }
-        }
-    }    
+   bool isValidSudoku(vector<vector<char>>& grid) {
+    for (int i = 0; i < 9; i++) {
+        unordered_set<char> rowSet, colSet, gridSet;
         
-    return true;
+        for (int j = 0; j < 9; j++) {
+            // Check row
+            int rowId = grid[i][j];
+            if (rowId != '.') {
+                if (rowSet.count(rowId)) {
+                    return false;
+                }
+                rowSet.insert(rowId);
+            }
+            
+            // Check column
+            int colId = grid[j][i];
+            if (colId != '.') {
+                if (colSet.count(colId)) {
+                    return false;
+                }
+                colSet.insert(colId);
+            }
+            
+            // Check grid
+            int gridRow = 3 * (i / 3) + j / 3;
+            int gridCol = 3 * (i % 3) + j % 3;
+            int gridId = grid[gridRow][gridCol];
+            if (gridId != '.') {
+                if (gridSet.count(gridId)) {
+                    return false;
+                }
+                gridSet.insert(gridId);
+            }
+        }
+    }
+    
+    return 1;
 }
+
 
 };
