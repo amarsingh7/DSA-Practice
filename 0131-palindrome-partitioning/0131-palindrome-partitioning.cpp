@@ -1,24 +1,30 @@
 class Solution {
 public:
-    bool isPalindrome(string &s, int start, int end)
+    bool isPalindrome(string &s)
     {
-        while(start<end)
-        {
-            if(s[start++] !=s[end--])
-                return false;
-        }
-        return true;
+		int n = s.size();
+		int i = 0, j = n - 1;
+		while (i < j) {
+			if (s[i++] != s[j--])
+				return false;
+		}
+		return true;
     }
     void dfs(vector<vector<string>>& result, vector<string>& subset, string& s, int start) {
     if (start == s.size()) 
-            result.push_back(subset);
-        
-    for(int end= start; end<s.length(); end++)
     {
-        if(isPalindrome(s, start, end))
+        result.push_back(subset);
+        return;
+    }
+     
+    string t;
+    for(int i= start; i<s.size(); i++)
+    {
+        t.push_back(s[i]);
+        if(isPalindrome(t))
         {
-            subset.push_back(s.substr(start, end-start+1));
-            dfs(result, subset, s, end+1);
+            subset.push_back(t);
+            dfs(result, subset, s, i+1);
             subset.pop_back();
         }
     }
