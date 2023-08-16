@@ -24,7 +24,7 @@ class Solution
                 v[i] = (v[i] + (v[j] * v[i - j - 1]) % MOD) % MOD;
             }
         } 
-        return static_cast<int>(v[n]);
+        return int(v[n]);
     }
 };
 
