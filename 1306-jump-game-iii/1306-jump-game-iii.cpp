@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool visited[500001]{};
+    bool visited[500001];
     bool canReach(vector<int>& arr, int start) {
         int n= arr.size();
         
@@ -11,7 +11,6 @@ public:
         visited[start]= true;
         
         return canReach(arr, start+arr[start]) || canReach(arr, start-arr[start]);
-        
         
     }
 };
