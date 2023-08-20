@@ -3,9 +3,8 @@ public:
     bool canReach(string s, int minJump, int maxJump) {
         int n= s.size();
         int prev=0;
-        // bool dp[n];
-        // memset(dp, false, sizeof(dp));
-        vector<bool> dp(n, false);
+        bool dp[n];
+        memset(dp, false, sizeof(dp));
         dp[0]= true;
         
         for(int i=1; i<n; i++)
