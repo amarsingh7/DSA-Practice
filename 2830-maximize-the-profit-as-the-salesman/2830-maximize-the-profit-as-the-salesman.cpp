@@ -13,9 +13,9 @@ public:
         
         int nextind= upper_bound(offers.begin(), offers.end(), temp)- offers.begin();
         int take= solve(nextind, m, offers, dp)+ offers[i][2];
-        int notake= solve(i+1, m, offers, dp);
+        int skip= solve(i+1, m, offers, dp);
             
-        return dp[i]= max(take, notake);
+        return dp[i]= max(take, skip);
     }
     
     int maximizeTheProfit(int n, vector<vector<int>>& offers) {
