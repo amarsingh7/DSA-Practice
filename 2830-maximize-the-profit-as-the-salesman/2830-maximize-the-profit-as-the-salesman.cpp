@@ -11,7 +11,7 @@ public:
         temp.push_back(offers[i][1]); temp.push_back(INT_MAX);
         temp.push_back(INT_MAX);
         
-        int nextind= upper_bound(offers.begin(), offers.end(), temp)- offers.begin();
+        int nextind= lower_bound(offers.begin(), offers.end(), temp)- offers.begin();
         int take= solve(nextind, m, offers, dp)+ offers[i][2];
         int skip= solve(i+1, m, offers, dp);
             
