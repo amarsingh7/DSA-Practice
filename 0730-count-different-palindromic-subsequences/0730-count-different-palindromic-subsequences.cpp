@@ -1,48 +1,54 @@
 class Solution {
 public:
     
-    int countPalindromicSubsequences(string S) {
-        int N = S.size();
-        long MOD = 1e9 + 7;
-        
-        vector<vector<int>> T(N, vector<int>(N, 0));
-        
-        for (int i = 0; i < N; ++i)
-            T[i][i] = 1;
-        
-        for (int gap = 1; gap < N; ++gap) {
-            for (int i = 0, j = i+gap; j < N; ++i, ++j) {
-                //Fill in T[i][j]
-                if (S[i] != S[j]) {
-                    T[i][j] = T[i+1][j] + T[i][j-1] - T[i+1][j-1];
-                } else {
-                    // Si, Si+1, ..., Sj-1, Sj
-                    // Si+1, ...., Sj-1
-                    T[i][j] = 2 * T[i+1][j-1];
-                    
-                    int l = i+1, r = j-1;
-                    while(l <= r && S[l] != S[i]) l++;
-                    while(l <= r && S[r] != S[i]) r--;
-                    
-                    if (l < r) {
-                        // S(i, j) = b # # b . . b # # b where # != b
-                        T[i][j] -= T[l+1][r-1];   
-                    }
-                    
-                    if (l == r) {
-                        // S(i, j) = b # # b # # b where # != b
-                        T[i][j] += 1;
-                    }
-                    
-                    if (l > r) {
-                        // S(i, j) = b # # # b where # != b
-                        T[i][j] += 2;
-                    }
+    int countPalindromicSubsequences(string s) {
+    int n = s.size();
+    long mod = 1e9 + 7;
+    
+    vector<vector<int>> dp(n, vector<int>(n, 0));
+    
+    // Base case: Single characters are palindromes.
+    for (int i = 0; i < n; ++i)
+        dp[i][i] = 1;
+    
+    // Fill in the dp table using bottom-up dynamic programming.
+    // Upper triangular matrix
+    for (int gap = 1; gap < n; ++gap) {
+        for (int i = 0, j = i + gap; j < n; ++i, ++j) {
+            // If characters at ends are not the same.
+            if (s[i] != s[j]) {
+                dp[i][j] = dp[i+1][j] + dp[i][j-1] - dp[i+1][j-1];
+            } 
+            else {
+                // If characters at ends are the same.
+                dp[i][j] = 2 * dp[i+1][j-1];
+                
+                int l = i+1, r = j-1;
+                while (l <= r && s[l] != s[i]) l++; // Move left pointer.
+                while (l <= r && s[r] != s[i]) r--; // Move right pointer.
+                
+                if (l < r) {
+                    // Subtract the overcounted cases.
+                    dp[i][j] -= dp[l+1][r-1];   
                 }
-                T[i][j] = (T[i][j] + MOD)%MOD;
+                
+                if (l == r) {
+                    // Add the single character palindromes.
+                    dp[i][j] += 1;
+                }
+                
+                if (l > r) {
+                    // Add the palindrome composed of repeated characters.
+                    dp[i][j] += 2;
+                }
             }
+            
+            // Ensure result stays within modulo range.
+            dp[i][j] = (dp[i][j] + mod) % mod;
         }
-        
-        return T[0][N-1]; 
     }
+    
+    return dp[0][n-1]; // Return the final result.
+}
+
 };
