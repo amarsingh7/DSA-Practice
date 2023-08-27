@@ -10,14 +10,15 @@ public:
             dp[1][1] = true; 
             // with a jump of step size 1, the frog reaches the 1st position.
         }
-        
+        int dif=0;
         for(int i = 1; i < m; ++i)
         {
             for(int j = i + 1; j < stones.size(); ++j)
             {
-                if(int diff = stones[j] - stones[i]; diff <= j)
+                dif= stones[j] - stones[i] ;
+                if(dif <= j)
                 {
-                    dp[j][diff] = dp[i][diff-1] || dp[i][diff] || dp[i][diff+1];
+                    dp[j][dif] = dp[i][dif-1] || dp[i][dif] || dp[i][dif+1];
                 }
             }
         }
