@@ -7,10 +7,8 @@ public:
         if(dp[n] != -1) return dp[n];
 
 
-        long long pick, npick;
-
-        pick = helper(n-2,dp)%mod;
-        npick = helper(n-1,dp)%mod;
+        long long pick= helper(n-2,dp)%mod;
+        long long npick= helper(n-1,dp)%mod; 
 
         return dp[n] = (pick+npick)%mod;
     } 
