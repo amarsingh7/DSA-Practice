@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[101][101][101]= {};
+    int dp[101][101][101];
     
     int solve(int r, int c1, int c2, vector<vector<int>> &grid) {
         int row = grid.size();
