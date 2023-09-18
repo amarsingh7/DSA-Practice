@@ -22,17 +22,20 @@ public:
     }
 
     int numSubmatrixSumTarget(vector<vector<int>>& matrix, int target)      {
+        int r= matrix.size();
+        int c= matrix[0].size();
         targ = target; // Set the target sum
-        vector<int> row(matrix[0].size()); 
+        
+        vector<int> row(c); 
         // Initialize a vector for storing row sums
 
-        for (int i = 0; i < matrix.size(); i++) {
+        for (int i = 0; i < r; i++) {
             fill(row.begin(), row.end(), 0); 
             // Clear row vector to start with row i as beginning
 
-            for (int j = i; j < matrix.size(); j++) {
+            for (int j = i; j < r; j++) {
                 // Add next row to row vector, effectively creating a 1D array representing submatrix
-                for (int x = 0; x < matrix[0].size(); x++)
+                for (int x = 0; x < c; x++)
                     row[x] += matrix[j][x];
 
                 solve(row);
