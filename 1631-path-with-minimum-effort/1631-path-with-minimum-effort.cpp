@@ -1,38 +1,40 @@
 class Solution {
 public:
-    int dp[101][101];
-    bool isvalid(int i, int j, vector<vector<int>>&heights)
+    bool dfs(int i, int j, int m, int n, int mid, vector<vector<int>>& ht, vector<vector<int>>&v)
     {
-        int r= heights.size();
-        int c= heights[0].size();
-        if(i<0 || j<0 || i>= r || j>= c)
-            return false;
-        return true;
+        if(i==m-1 and j==n-1)
+            return true;
+        v[i][j]= 1;
+        int direction[4][2]= {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+        for(auto d:direction)
+        {
+            int ui= i+d[0];
+            int uj= j+d[1];
+            if(ui>=0 and uj>=0 and ui<=m-1 and uj<=n-1 and !v[ui][uj] and abs(ht[i][j] - ht[ui][uj]) <=mid){
+               if(dfs(ui, uj, m, n, mid, ht, v))
+                    return true; 
+            } 
+        }
+        return false;
     }
     int minimumEffortPath(vector<vector<int>> &heights) {
-    int m = heights.size(), n = heights[0].size();
-    int dirs[5] = {-1, 0, 1, 0, -1};
-
-    std::vector<vector<int>> efforts(m, vector<int>(n, INT_MAX));
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-
-    pq.emplace(0, 0); // First item is effort, second is row * 100 + col
-    while (!pq.empty()) {
-      int effort = pq.top().first;
-      int x = pq.top().second / 100, y = pq.top().second % 100;
-      pq.pop();
-
-      if (effort >= efforts[x][y]) continue;
-      efforts[x][y] = effort;
-
-      for (int i = 0; i < 4; i++) {
-        int nx = x + dirs[i], ny = y + dirs[i + 1];
-        if (nx < 0 || nx >= m || ny < 0 || ny >= n) continue;
-        int n_effort = max(effort, abs(heights[x][y] - heights[nx][ny]));
-        pq.emplace(n_effort, nx * 100 + ny);
-      }
-    }
-    return efforts[m-1][n-1];
+        int m = heights.size(), n = heights[0].size();
+        int s=0;
+        int e= INT_MAX, ans= INT_MAX;
+        
+        while(s<=e)
+        {
+            int mid= s+(e-s)/2;
+            vector<vector<int>>v (m+1, vector<int>(n+1, 0));
+            if(dfs(0, 0, m, n, mid, heights, v))
+            {
+                ans= min(ans, mid);
+                e= mid-1;
+            }
+            else
+                s= mid+1;
+        }
+        return ans;
   }
     
 };
