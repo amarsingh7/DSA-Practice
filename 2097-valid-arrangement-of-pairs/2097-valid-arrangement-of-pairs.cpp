@@ -7,7 +7,7 @@ public:
     {
         while(graph[node].size())
         {
-            int x= graph[node].back();
+            auto x= graph[node].back();
             graph[node].pop_back();
             dfs(x);
             ans.push_back({node, x});
@@ -19,8 +19,8 @@ public:
         for(auto &x:pairs)
         {
             graph[x[0]].push_back(x[1]);
-            ++indegree[x[0]];
-            --indegree[x[1]];
+            indegree[x[0]]++;
+            indegree[x[1]]--;
         }
         int start= -1;
         for(auto &x:indegree)
