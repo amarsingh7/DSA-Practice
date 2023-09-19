@@ -7,9 +7,7 @@ public:
         if((n==1 ) and (k%2 !=0))
             return -1;
         if((n>1) and (k==1))
-            return nums[1];
-        if((k==2) and (n>=3))
-            return max(nums[0], nums[2]);
+            return nums[1]; 
             
         if(n<k)
             return *max_element(nums.begin(), nums.end());
