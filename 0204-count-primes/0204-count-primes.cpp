@@ -5,7 +5,7 @@ public:
         dp[0]= false;
         dp[1]= false;
         
-        for(long long i=2; i<n; i++)
+        for(long long i=2; i*i<n; i++)
         {
             if(dp[i])
             {
