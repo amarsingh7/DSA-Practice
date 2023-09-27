@@ -17,7 +17,7 @@ public:
         {
             if(isdigit(s[i]))
             {
-                total /= s[i]-'0';
+                total /= (s[i]-'0');
                 k= k%total;
             }
             else
