@@ -8,7 +8,7 @@ public:
         for(int i=0; i<n; i++)
         {
             if(isdigit(s[i]))
-                total= total * (s[i]-'0');
+                total*= (s[i]-'0');
             else
                 total+= 1;
         }
