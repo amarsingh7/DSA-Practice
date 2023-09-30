@@ -12,3 +12,11 @@ public:
         return max(1, ans);
     }
 };
+
+/*
+We can split the array only if the score of all subarrays is zero(Eg-1).
+
+If the score of the entire array is not zero but m, then the score of any subarray cannot be less than m. Therefore, any split will add at least m to the sum.
+
+So, we count subarrays with the zero score.
+*/
