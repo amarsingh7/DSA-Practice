@@ -14,20 +14,21 @@ public:
     
     string solve(TreeNode* root, int &ans)
     {
-        if(root==NULL)
+        if(root==NULL)  // if root is null, so no camera needed
             return "no-need-camera";
         string l= solve(root->left, ans);
         string r= solve(root->right, ans);
         
         if(l=="cover-me" || r=="cover-me")
-        {
+        {   // if both child is unsafe, give a camera to parent
             ans++;
             return "have-camera";
-        }
+        }   
+        // if a child have camera, mo need of camera on its parent.
         else if(l=="have-camera" || r=="have-camera")
             return "no-need-camera";
            
-        return "cover-me";
+        return "cover-me";  // no one is protcecting root, so camera needed to root
     }
     
     int minCameraCover(TreeNode* root) {
