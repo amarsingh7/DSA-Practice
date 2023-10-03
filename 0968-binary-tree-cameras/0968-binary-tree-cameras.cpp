@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    
+    // (no-need-camera, cover-me, have-camera)
     string solve(TreeNode* root, int &ans)
     {
         if(root==NULL)  // if root is null, so no camera needed
