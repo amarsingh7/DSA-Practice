@@ -1,8 +1,8 @@
 class MyHashMap {
 public:
     vector<pair<int, int>> vp;
-    MyHashMap() {
-        vector<pair<int, int>> vp;
+    MyHashMap() { 
+        
     }
     
     void put(int key, int value) {
