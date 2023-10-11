@@ -21,7 +21,7 @@ public:
             return firstMax * secondMin;
         }
         
-        if (firstMin > 0 && secondMax < 0) {
+        if (secondMax < 0 && firstMin > 0) {
             return firstMin * secondMax;
         } 
 
