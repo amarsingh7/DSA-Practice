@@ -30,7 +30,7 @@ public:
     }
 
     int findPeakIndex(int low, int high, MountainArray &mountainArr) {
-        while (low != high) {
+        while (low < high) {
             int mid = low + (high - low) / 2;
             if (mountainArr.get(mid) < mountainArr.get(mid + 1)) {
                 low = mid + 1; // Move to the right side (increasing slope).
@@ -43,7 +43,7 @@ public:
     }
 
     int binarySearch(int low, int high, int target, MountainArray &mountainArr, bool reversed) {
-        while (low != high) {
+        while (low < high) {
             int mid = low + (high - low) / 2;
             if (reversed) {
                 if (mountainArr.get(mid) > target)
