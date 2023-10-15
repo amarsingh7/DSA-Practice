@@ -4,22 +4,23 @@ public:
         int n= s.size();
         if(n==2)
             return 1;
-        
-        char prev= '(';
-        int depth=0, ans=0;
+        stack<int> st;
+        int ind=0, ans=0;
         
         for(auto c:s)
         {
-            if(c=='(')
-                depth++;
-            else
+            if(c=='(')  // found open aprentheses, calculation starts from here
             {
-                depth--;
-                if(prev=='(')
-                    ans+= pow(2, depth) ;
+                st.push(ind);
+                ind=0;
+            }   
+            else    // found closing parentheses, process them  
+            {
+                ind= st.top()+ max(2*ind, 1);
+                st.pop();
+                    
             }
-            prev= c;
         }
-        return ans;
+        return ind;
     }
 };
