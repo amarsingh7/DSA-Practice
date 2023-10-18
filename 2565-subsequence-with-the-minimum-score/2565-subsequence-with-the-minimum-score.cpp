@@ -21,7 +21,7 @@ public:
         {
             if(s[i]==t[j])
             {
-                // updating k each unmatched chars unmtil we found next match
+                // updating k for each unmatched chars untill we found next match
                 for(; k<t.size() and dp[k]<=i; ++k); 
                 res= min(res, k-(++j));
             }
