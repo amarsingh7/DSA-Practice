@@ -11,24 +11,32 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* root, vector<vector<int>> &temp, int level)
-    {
-        if(root==NULL)
-            return;
-        if(level==temp.size())
-            temp.push_back({})    ;
-        temp[level].push_back(root->val);
-        solve(root->left, temp, level+1);
-        solve(root->right, temp, level+1);
-    }
+    
     vector<int> largestValues(TreeNode* root) {
         vector<int> ans;
+        if(root==NULL)
+            return ans;
+        queue<TreeNode*> q;
+        q.push(root);
         
-        vector<vector<int>> temp;
-        solve(root, temp, 0);
-        
-        for(auto x:temp)
-            ans.push_back(*max_element(x.begin(), x.end()));
+        while(!q.empty())
+        {
+            int n= q.size();
+            int curmax=INT_MIN;
+            
+            for(int i=0; i<n; i++)
+            {
+                TreeNode * node= q.front();
+                q.pop();
+                if(curmax< node->val)
+                    curmax= node->val;
+                if(node->left)
+                    q.push(node->left);
+                if(node->right)
+                    q.push(node->right);
+            }
+            ans.push_back(curmax);
+        }
         
         return ans;
     }
