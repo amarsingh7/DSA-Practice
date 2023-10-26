@@ -1,0 +1,2 @@
+* **IFNULL** function accepts two expressions, and if the first expression is not null, it returns the first arguments.
+* If you are joining two tables and want the result set to include unmatched rows from only one table, use a LEFT OUTER JOIN clause or a RIGHT OUTER JOIN clause.
