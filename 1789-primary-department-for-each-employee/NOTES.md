@@ -1,0 +1,1 @@
+**UNION ** of two kind of query
