@@ -1,1 +1,1 @@
-​
+Wheen u need some sort of similarity in a column, say n repeated valus in a column. create that may auxilary table for the same. and in where clause just do comparision,
