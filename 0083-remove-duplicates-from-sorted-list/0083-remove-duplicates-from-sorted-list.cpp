@@ -14,19 +14,18 @@ public:
         if(!head || head->next==NULL)
             return head;
         ListNode *ans= new ListNode(head->val);
-    ListNode *temp= ans;
+        ListNode *temp= ans;
     
-    while(head->next)
-    {
-        if(head->val != head->next->val)
-        {    
-            temp->next= new ListNode(head->next->val);
-            temp= temp->next;
-        }
-        
+        while(head->next)
+        {
+            if(head->val != head->next->val)
+            {    
+                temp->next= new ListNode(head->next->val);
+                temp= temp->next;
+            }   
         head= head->next;
         
-    }
-    return ans;
+        }
+        return ans;
     }
 };
