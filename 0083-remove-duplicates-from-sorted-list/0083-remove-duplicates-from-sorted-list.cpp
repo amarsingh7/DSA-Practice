@@ -23,8 +23,7 @@ public:
                 temp->next= new ListNode(head->next->val);
                 temp= temp->next;
             }   
-        head= head->next;
-        
+            head= head->next; 
         }
         return ans;
     }
