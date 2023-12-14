@@ -13,46 +13,34 @@ class Solution {
 public:
     
     ListNode* reverseKGroup(ListNode* head, int k) {
-        ListNode* temp = head;  // Pointer to traverse the linked list
-        vector<int> ans;  // Vector to store values of the linked list nodes
+        ListNode* cur=head;
+        ListNode* prev= NULL, *next=NULL;
         
-        // Extract values from the linked list and store them in the vector
-        while (temp != NULL) {
-            ans.push_back(temp->val);
-            temp = temp->next;
+        int count=0;
+        
+        ListNode *temp= head;
+        while(temp !=NULL)
+        {
+            count++;
+            temp= temp->next;
         }
         
-        int n = ans.size();  // Total number of elements in the vector
-        
-        // Reverse subarrays of size 'k' in the vector
-        for (int i = 0; i < ans.size(); i += k) {
-            int start = i;
-            int end = i + k - 1;  // Calculate the end index directly
+        if(count <k)
+            return head;
+        int counter=0;
+        while(cur!=NULL and counter <k)
+        {
+            next= cur->next;
+            cur->next= prev;
+            prev= cur;
+            cur= next;
             
-            bool check = false;
-            if (end >= ans.size()) {
-                check = true;  
-                // Set check to true if the end index exceeds the vector size
-            }
-            
-            if (check)
-                break;  
-            // Break the loop if the end index exceeds the vector size
-            
-            // Reverse the subarray in the vector
-            std::reverse(ans.begin() + start, ans.begin() + end + 1);
+            counter++;
         }
+        if(next !=NULL)
+            head->next= reverseKGroup(next, k);
         
-        int i = 0;
-        temp = head;  // Reset temp to the head of the linked list
-        
-        // Update the linked list with reversed values from the vector
-        while (temp) {
-            temp->val = ans[i];
-            i++;
-            temp = temp->next;
-        }
-        
-        return head;  // Return the modified head of the linked list
+        return prev;
+            
     }
 };
