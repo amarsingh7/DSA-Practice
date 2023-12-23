@@ -1,8 +1,6 @@
 class Solution {
 public:
     bool isPathCrossing(string path) {
-        int n= path.size();
-        bool ans= false;
         int y=0, x=0;
         set<pair<int, int>> sp;
         sp.insert({x, y});
