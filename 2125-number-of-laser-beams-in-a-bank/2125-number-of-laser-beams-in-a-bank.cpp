@@ -2,8 +2,6 @@ class Solution {
 public:
     int numberOfBeams(vector<string>& bank) {
         int n= bank.size();
-        if(n==1)
-            return 0;
         int ans=0;
         int count=0;
         vector<int> vec;
